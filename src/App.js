@@ -5,9 +5,10 @@ import { Navbar, Container, Nav} from 'react-bootstrap';
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import Detail from './routes/Detail';
+import axios from 'axios';
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
 
   return (
@@ -22,10 +23,6 @@ function App() {
     </Nav>
     </Container>
   </Navbar>
-
-    <Link to='/'>홈</Link>
-    
-    <Link to='detail'>상세페이지</Link>
     
     <Routes>
       <Route path='/' element={<div>    
@@ -38,10 +35,20 @@ function App() {
     </div>
     </div>
     </div>}/>
-      <Route path='/detail' element={<div><Detail/> </div>}/>
+      <Route path='/detail/:id' element={<div><Detail shoes={shoes}/> </div>}/>
       <Route path='*' element={<div>없는페이지요</div>}/>
     </Routes>
 
+    <button onClick={()=>{
+      axios.get('https://codingapple1.github.io/shop/data2.json')
+      .then((data)=>{
+        let copy = [...shoes, ...data.data]
+        setShoes(copy)
+      })
+      .catch(()=>{
+        console.log('실패함')
+      })
+    }}>버튼</button>
     </div>
   );
 }
