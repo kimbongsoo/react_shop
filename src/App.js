@@ -39,7 +39,7 @@ function App() {
       <Route path='*' element={<div>없는페이지요</div>}/>
     </Routes>
 
-    <button onClick={()=>{
+    {/* <button onClick={()=>{
       axios.get('https://codingapple1.github.io/shop/data2.json')
       .then((data)=>{
         let copy = [...shoes, ...data.data]
@@ -48,7 +48,7 @@ function App() {
       .catch(()=>{
         console.log('실패함')
       })
-    }}>버튼</button>
+    }}>버튼</button> */}
     </div>
   );
 }
