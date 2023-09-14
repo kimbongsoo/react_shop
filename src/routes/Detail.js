@@ -68,20 +68,36 @@ function Detail(props){
       <Nav.Link onClick={()=>{ setTab(2) }} eventKey="link2">버튼2</Nav.Link>
     </Nav.Item>
   </Nav>
-  <TabContent tab={tab}></TabContent>
+  <TabContent tab={tab} shoes={props.shoes}></TabContent>
 </div> 
     )
 }
-
 function TabContent(props){
-  if (props.tab === 0){
-    return <div>내용0</div>
-  }
-  if (props.tab === 1){
-    return <div>내용1</div>
-  }
-  if (props.tab === 2){
-    return <div>내용2</div>
-  }
+  let [fade, setFade] = useState('')
+  
+  useEffect(()=> {
+    let a = setTimeout(()=> {setFade('end')}, 100)
+
+    return ()=>{
+      clearTimeout(a)
+      setFade('')
+    }
+  }, [props.tab])
+
+  return (<div className={`start ${fade}`}>
+    {[<div>{props.shoes[0].title}</div>, <div>{props.shoes[1].title}</div>, <div>{props.shoes[2].title}</div>][props.tab] }
+  </div>)
 }
+
+// function TabContent(props){
+//   if (props.tab === 0){
+//     return <div>내용0</div>
+//   }
+//   if (props.tab === 1){
+//     return <div>내용1</div>
+//   }
+//   if (props.tab === 2){
+//     return <div>내용2</div>
+//   }
+// }
 export default Detail;

@@ -5,6 +5,7 @@ import { Navbar, Container, Nav} from 'react-bootstrap';
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import Detail from './routes/Detail';
+import Cart from './routes/Cart';
 import axios from 'axios';
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
     </div>
     </div>}/>
       <Route path='/detail/:id' element={<div><Detail shoes={shoes}/> </div>}/>
-      <Route path='*' element={<div>없는페이지요</div>}/>
+      <Route path='/cart' element={<div><Cart/></div>}/>
+      {/* <Route path='*' element={<div>없는페이지요</div>}/> */}
     </Routes>
 
     {/* <button onClick={()=>{
