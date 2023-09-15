@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Nav } from 'react-bootstrap';
 import { tab } from '@testing-library/user-event/dist/tab';
+import { addItem } from './../store.js';
+import { useDispatch } from 'react-redux';
 
 // let YellowBtn = styled.button`
 //   background : yellow;
@@ -25,6 +27,7 @@ function Detail(props){
 //       clearTimeout(a)
 //     }
 //   }, [])
+  let dispatch = useDispatch();
   let [tab, setTab] = useState(0);
   let {id} = useParams();
   let findShoes = props.shoes.find(function(x){
@@ -54,7 +57,9 @@ function Detail(props){
       <h4 className="pt-5">{findShoes.title}</h4>
       <p>{findShoes.content}</p>
       <p>{findShoes.price}</p>
-      <button className="btn btn-danger">주문하기</button> 
+      <button className="btn btn-danger" onClick={()=>{
+      dispatch(addItem( {id : 1, name : 'Red Knit', count : 1} ))
+      }}>주문하기</button>
     </div>
   </div>
   <Nav variant="tabs"  defaultActiveKey="link0">
