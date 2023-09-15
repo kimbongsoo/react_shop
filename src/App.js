@@ -38,7 +38,7 @@ function App() {
     </div>}/>
       <Route path='/detail/:id' element={<div><Detail shoes={shoes}/> </div>}/>
       <Route path='/cart' element={<div><Cart/></div>}/>
-      {/* <Route path='*' element={<div>없는페이지요</div>}/> */}
+      {/* <Route path='*' element={<div>없는페이지</div>}/> */}
     </Routes>
 
     {/* <button onClick={()=>{
