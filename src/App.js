@@ -9,6 +9,10 @@ import Cart from './routes/Cart';
 import axios from 'axios';
 
 function App() {
+  let obj = {name: 'kim'}
+  JSON.stringify(obj)
+  localStorage.setItem('data', obj)
+
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
 
